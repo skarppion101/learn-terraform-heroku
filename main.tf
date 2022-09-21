@@ -16,16 +16,31 @@ resource "heroku_app" "dev_api" {
   }
 }
 
+
+// Domains
+#resource "heroku_domain" "default" {
+#  app      = heroku_app.dev_api.name
+#  hostname = "${heroku_app.dev_api.name}.herokuapp.com"
+#}
+
+
 // Pipelines
 resource "heroku_pipeline" "development" {
   name = "lokr-room-api-dev-pipeline"
 }
 
-// Databases
+
+// Addons
 resource "heroku_addon" "postgres" {
   app  = heroku_app.dev_api.id
   plan = "heroku-postgresql:hobby-dev"
 }
+
+resource "heroku_addon" "simple_file_upload" {
+  app  = heroku_app.dev_api.id
+  plan = "simple-file-upload:staging"
+}
+
 
 # Couple app to pipeline.
 resource "heroku_pipeline_coupling" "app" {
