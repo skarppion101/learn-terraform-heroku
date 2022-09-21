@@ -1,33 +1,35 @@
-provider "heroku" {}
-
-resource "heroku_app" "example" {
-  name   = "learn-terraform-heroku"
-  region = "us"
+// Create an app.
+resource "heroku_app" "staging" {
+  name   = "terraform-alcho-bot"
+  region = "eu"
 }
 
-resource "heroku_addon" "postgres" {
-  app  = heroku_app.example.id
-  plan = "heroku-postgresql:hobby-dev"
+// Create a pipeline.
+resource "heroku_pipeline" "foobar" {
+  name = "stage-pipeline"
 }
 
-resource "heroku_build" "example" {
-  app = heroku_app.example.id
-
-  source {
-    path = "./app"
-  }
+# Couple app to pipeline.
+resource "heroku_pipeline_coupling" "staging" {
+  app      = heroku_app.staging.name
+  pipeline = heroku_pipeline.foobar.id
+  stage    = "staging"
 }
 
-variable "app_quantity" {
-  default     = 1
-  description = "Number of dynos in your Heroku formation"
+// Add the GitHub repository integration with the pipeline.
+resource "herokux_pipeline_github_integration" "foobar" {
+  pipeline_id = heroku_pipeline.foobar.id
+  org_repo    = "skarppion101/sabir-alcho-bot"
 }
 
-# Launch the app's web process by scaling-up
-resource "heroku_formation" "example" {
-  app        = heroku_app.example.id
-  type       = "web"
-  quantity   = var.app_quantity
-  size       = "Standard-1x"
-  depends_on = [heroku_build.example]
+// Add Heroku app GitHub integration.
+resource "herokux_app_github_integration" "foobar" {
+  app_id      = heroku_app.staging.uuid
+  branch      = "master"
+  auto_deploy = true
+  wait_for_ci = true
+
+  # Tells Terraform that this resource must be created/updated
+  # only after the `herokux_pipeline_github_integration` has been successfully applied.
+  depends_on = [herokux_pipeline_github_integration.foobar]
 }

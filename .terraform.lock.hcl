@@ -1,12 +1,38 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
+provider "registry.terraform.io/davidji99/herokux" {
+  version     = "1.1.0"
+  constraints = "1.1.0"
+  hashes = [
+    "h1:NF9elkBywwbWglQlxdh6CcA/FVQyoerF7QZIfX1m5Vw=",
+    "zh:0e9cfb1621507aa0f71cf4f79524d5f1600088fb03bd9b082f2e99d6d91871fd",
+    "zh:11d9187b110292aa4c6315ec3ef24f277e094e00315887c6eab9ed9cea6854d1",
+    "zh:262f323cb83607fc1f43248293f0f9178ccfa639c689ea132f4a67b4b92fe58d",
+    "zh:28f9caeb5ba9f252b3710a466550bf1abf8d09cd8fc2122f90ca2805273dfdd3",
+    "zh:2c21e4030d9e84e9bbc3154f720aeab9537b1120efbcd2610f3b7477c180075b",
+    "zh:3e86f8d594ab9ea35fe48b26f9f0ae79ac906a023614350d7434100b0367bf78",
+    "zh:4913a3673a61152056e5f57c99963d2ea15a8a221a956398738e571fd4a84186",
+    "zh:5dbb526ff0dc6a7a8a67229ae5b6e39c874bb10e65de790a7e6ec3640a72b293",
+    "zh:6121e59c9fcb5b859b1bedaf40b68b9906bea76f7a73bc71197ae797bed2fece",
+    "zh:64423d337f6cbd8bf02f56bd9d327ac5bb6eb69250293cef107594dc01a55ffe",
+    "zh:7091f9220ca620e8c2eb31870ce3b1b1c0972c68b9ed79f91bfc1bc4f3babeff",
+    "zh:8dba86b069215eeb5b7b3be7ac392a9c18b33482278938a17469d80c87b7ec94",
+    "zh:9f4099dcfaab4367915151d30bcdf0918a4dc5f9b872a04584f6395c2c9cf473",
+    "zh:a26aa4325f1ac426b6d40f19a3d65e715b9d1ed008fd40d6c4827b84e4b95a9d",
+    "zh:b7691ff84cdbcbffdb57b9f733ab5e6ce3f5c5ef50a7de3f8c08bdcd112ffcfe",
+    "zh:b92adaff23a8e4f7d30e2a8cabcb7280e3d6035b6e91885d3713ccc7a684a482",
+    "zh:d8db1cf614b0bd3ff7b5f607f9ff49022a233c73e609f8150d94b3931be7d674",
+    "zh:e8da67a0f1ee03ddbf06c5eec1f4879799230081bbd2a65d4f656499998d4022",
+    "zh:f51723ccb98d1e59540efd22353ca506086d17958d224a3818ce9d15d49af68a",
+  ]
+}
+
 provider "registry.terraform.io/heroku/heroku" {
   version     = "4.6.0"
   constraints = "~> 4.6.0"
   hashes = [
     "h1:AtnR9tsQC90ztGGCkUB3Hia6/m8Lksx4Wft4xnaXpqU=",
-    "h1:e88YRtgc/5CNwlzqXiAt1cRXF8X7/ExZh4FQs6Pdvvc=",
     "zh:20ffba655d2e3a1732fc425c95407ba2f64bde59c2542de737cf3537a2d8a468",
     "zh:4eaebcd282010bd2bcf0aca11b2a86b41a48e797603aaaa195766a134fe45bf7",
     "zh:509fa96b35cd4a1a762bab626c3a041acfda924eb88b2903a396cda579b90e38",
