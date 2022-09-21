@@ -12,5 +12,9 @@ terraform apply -auto-approve -var-file=".env.tfvars"
 ```
 
 ```bash
+terraform plan -var-file=".env.tfvars"
+```
+
+```bash
 terraform destroy -auto-approve -var-file=".env.tfvars"
 ```

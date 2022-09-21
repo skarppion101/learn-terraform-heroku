@@ -1,6 +1,7 @@
 // Create an app.
 resource "heroku_app" "staging" {
   name   = "terraform-alcho-bot"
+  buildpacks = ["heroku/nodejs"]
   region = "eu"
 }
 
@@ -33,3 +34,13 @@ resource "herokux_app_github_integration" "foobar" {
   # only after the `herokux_pipeline_github_integration` has been successfully applied.
   depends_on = [herokux_pipeline_github_integration.foobar]
 }
+
+
+# Launch the app's web process by scaling-up
+#resource "heroku_formation" "staging" {
+#  app        = heroku_app.staging.id
+#  type       = "web"
+#  quantity   = 1
+#  size       = "Standard-1x"
+#  depends_on = [herokux_app_github_integration.foobar]
+#}
