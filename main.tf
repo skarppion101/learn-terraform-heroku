@@ -18,21 +18,21 @@ resource "heroku_app" "dev_api" {
 
 
 // Domains
-resource "heroku_domain" "default" {
-  app_id      = heroku_app.dev_api.id
-  hostname = "${heroku_app.dev_api.name}.herokuapp.com"
-}
+#resource "heroku_domain" "default" {
+#  app_id      = heroku_app.dev_api.id
+#  hostname = "${heroku_app.dev_api.name}.herokuapp.com"
+#}
 
 
 // Addons
 resource "heroku_addon" "postgres" {
-  app_id  = heroku_app.dev_api.id
-  plan = "heroku-postgresql:hobby-dev"
+  app_id = heroku_app.dev_api.id
+  plan   = "heroku-postgresql:hobby-dev"
 }
 
 resource "heroku_addon" "simple_file_upload" {
-  app_id  = heroku_app.dev_api.id
-  plan = "simple-file-upload:staging"
+  app_id = heroku_app.dev_api.id
+  plan   = "simple-file-upload:staging"
 }
 
 
@@ -68,21 +68,10 @@ resource "herokux_app_github_integration" "development" {
 }
 
 
-// Building
-resource "heroku_build" "development" {
-  app_id     = heroku_app.dev_api.id
-  buildpacks = heroku_app.dev_api.buildpacks
-
-  source {
-    url = "https://github.com/PinkUnicornLabs/lokr-room-api.git"
-    #    version = "v2.1.1"
-  }
-}
-
+// Deploy
 resource "heroku_formation" "development" {
-  app_id     = heroku_app.dev_api.id
-  type       = "web"
-  quantity   = 1
-  size       = "Standard-1x"
-  depends_on = ["heroku_build.development"]
+  app_id   = heroku_app.dev_api.id
+  type     = "web"
+  quantity = 1
+  size     = "Standard-1x"
 }
