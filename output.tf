@@ -1,4 +1,4 @@
 output "app_url" {
-  value       = heroku_app.staging.web_url
-  description = "Application URL"
+  value       = heroku_app.dev_api.web_url
+  description = "Dev API URL"
 }
